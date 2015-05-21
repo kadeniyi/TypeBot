@@ -1,0 +1,165 @@
+<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+<script src="http://fgnass.github.io/spin.js/spin.js"></script>
+
+  <link href="bower_components/font-roboto/roboto.html" rel="import">
+  <link rel="import" href="bower_components/paper-input/paper-autogrow-textarea.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+   <link rel="import" href="bower_components/core-icons/core-icons.html">
+  <link rel="import" href="bower_components/core-item/core-item.html">
+  <link rel="import" href="bower_components/core-label/core-label.html">
+  <link rel="import" href="bower_components/core-selector/core-selector.html">
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+ 
+
+  
+
+  <style shim-shadowdom>
+  
+    
+    section {
+  margin: 20px;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+
+    core-toolbar {
+      background-color: #b21500;
+      color: #fff;
+      box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    core-toolbar paper-tabs {
+      box-shadow: none;
+    }
+    
+  </style>
+
+  <core-toolbar>
+         
+    <span flex><a href="/index" style="color: white">Typing Bot</a></span>
+  <h3>  
+  <span style="float: right; "><label> Hi, <%= user.firstname+" " %>  </label><a href="/logout" style="background-color: rgba(255,255,255,1); padding:2px; border: solid rgba(0,0,0,0.2); border-radius:3px;"> Log out</a></span>
+    </h3>
+  </core-toolbar>
+
+
+<div style="background-color:#ffffff; margin-left: auto;padding: 10px; margin-right: auto;margin-bottom: 10px;margin-top: 2px;padding-bottom: 10px; height:auto; width:99%;">
+  
+<div class="type2" id="hs1">
+	<div id="hs">
+	<center><label>Highest Scores</label></center>
+	<label class="high" id="high"><%=@high.to_s%></label>
+	  <% for @item in highscore %>
+	  	<% n+=1 %>
+	    <p ><label style="float: left; padding-left: 2px;"><%= n.to_s+". "+@item.firstname + " " +@item.surname%></label>
+	    	<label style="float: right; padding-right: 4px;"><%= @item.cpm.to_s + "CPM " +@item.wpm.to_s+"WPM "%></label></p><br/>
+	  <% end %>
+	</div>
+	
+</div>
+
+<div class="type">
+	<script type="text/javascript" src="script.js"></script>
+
+	<paper-button raised class="colored" id="button1"><label id="lab">Start Typing!</label></paper-button>
+	<div id="result" style="float: right; "></div>
+	<div class="click" id="mydiv">
+		<p><h1 id="mlabel"><label id="mylabel"><%= quest[rand(0..3)] %><label></h1></p>
+		
+			<textarea id="t1"></textarea>
+		<p>
+                <span class="label">Characters/Minute</span>
+                <span id="CPM">0</span>
+            </p>
+            <p>
+                <span class="label">Words/Minute</span>
+                <span id="WPM">0</span>
+            </p>
+
+
+
+	</div>
+	
+<form id="foo" class="hideform">
+   
+    <input id="bar" name="bar" type="text" />
+    <input id="bar2" name="bar2" type="text" />
+
+    <input type="submit" value="Send" />
+</form>
+		
+</div>
+
+
+
+
+
+<style shim-shadowdom>
+  paper-button[raised].colored {
+      background: #b21500;
+      color: #fff;
+      width: 200px;
+      height: 50px;
+      margin-left: auto; 
+  	  margin-right: auto;
+  	  margin-bottom: 10px;
+  	  margin-top: 10px;
+    }
+   .click{
+   	display: none;
+   }
+
+   .hideform{
+   	display: none;
+   }
+
+
+  .type{
+  	position: absolute;
+  	text-transform: inherit;
+  	border: solid #b21500 2px;
+  	margin-left: 32%; 
+  	margin-right: auto;
+  	margin-bottom: 10px;
+  	margin-top: 18px;
+  	width: 50%;
+  	padding: 10px;
+  	
+  }
+
+  .type2{
+  	position: absolute;
+  	text-transform: inherit;
+  	float: left;
+  	margin-top: 18px;
+  	margin-bottom: 10px;
+  	margin-right: auto;
+  	width: 30%;
+  	border: solid #b21500 2px;
+  	padding-top: 10px;
+  	padding-bottom: 15px;
+  }
+ 
+  textarea {
+  	margin: auto;
+  	border: solid #b21500 2px;
+    text-transform: inherit;
+  	width: 98%;
+  	padding: 2px;
+    background-color: rgba(0,0,0,0.1);
+  	color: #000;
+  	min-height: 100px;
+  	font-size: 24px;
+  }
+
+  .high{
+  	display: none;
+
+  }
+</style>
+
+
+</div>

@@ -1,0 +1,135 @@
+<script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+
+<!-- Import element -->
+
+  <link rel="import" href="bower_components/core-icons/core-icons.html">
+  <link rel="import" href="bower_components/core-item/core-item.html">
+  <link rel="import" href="bower_components/core-label/core-label.html">
+  <link rel="import" href="bower_components/core-selector/core-selector.html">
+  <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="bower_components/core-menu/core-menu.html">
+  <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
+  <link rel="import" href="bower_components/font-roboto/roboto.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-checkbox/paper-checkbox.html">
+  <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="bower_components/paper-input/paper-input.html">
+  <link rel="import" href="bower_components/paper-tabs/paper-tabs.html">
+  <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+  <link rel="import" href="bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+  <link rel="import" href="bower_components/paper-dropdown/paper-dropdown.html">
+  <link rel="import" href="bower_components/paper-item/paper-item.html">
+
+<style shim-shadowdom>
+  
+    
+    section {
+  margin: 20px;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+
+    core-toolbar {
+      background-color: #b21500;
+      color: #fff;
+      box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.2);
+    }
+    
+    core-toolbar paper-tabs {
+      box-shadow: none;
+    }
+    
+  </style>
+<core-toolbar>
+         
+    <span flex><a href="/index" style="color: white">Typing Bot</a></span>
+    <h3>  
+  		<span style="float: right; "> <a href="/signup" style="background-color: rgba(255,255,255,1); padding:2px; border: solid rgba(0,0,0,0.2); border-radius:3px;"> Sign Up</a></span>
+    </h3>
+  </core-toolbar>
+
+ <div style="background-color:#ffffff; margin-left: auto;padding: 10px; margin-right: auto;margin-bottom: 10px;margin-top: 5px;padding-bottom: 10px; height:auto; width:100%">
+  
+        <div style="background-color:#ffffff; margin-left: auto;padding: 10px; margin-right: auto;margin-bottom: 10px;margin-top: 5px;padding-bottom: 10px; height:auto; width:50%">
+ 
+         
+        </div>
+     <div style="background-color:#ffffff; margin-left: auto;padding: 10px; margin-right: auto;margin-bottom: 10px;margin-top: 5px;padding-bottom: 10px; height:auto; width:30%">
+     	<%= user %>
+    
+       <FORM NAME ="form1" METHOD ="POST" ACTION ="/">
+		
+			 <paper-input-decorator label="Enter username" >
+			<core-label for=#username >
+			Username
+			</core-label>
+			
+                <input is="core-input" type="text" id="username" name="username" required="required" value="" maxlength="16">
+				
+            </paper-input-decorator> <br>
+			
+			
+			
+			<paper-input-decorator label="Enter password" >
+			<core-label for=#password >
+			Password
+			</core-label>
+                <input is="core-input" type="password"id="password"name="password" required="required" value="" maxlength="20">
+            </paper-input-decorator><br>
+
+
+					<paper-submit-button-decorator style="width: 100px;margin-top: 10px;margin-bottom: 100px">
+                        
+                        <button type="submit" name="submit">Login</button>
+                    </paper-submit-button-decorator>       
+                <br>
+
+
+</FORM>
+
+<style shim-shadowdom>
+  paper-submit-button-decorator {
+    padding:0;
+  }
+  paper-submit-button-decorator::shadow .button-content {
+    padding:0;
+  }
+  paper-submit-button-decorator button {
+    text-transform: inherit;
+        padding: 0.7em 0.57em;
+        display: inline-block;
+        position: relative;
+        box-sizing: border-box;
+        min-width: 5.14em;
+        max-width: 6.00em;
+        margin: 0 0.29em;
+        background: transparent;
+        text-align: center;
+        font: inherit;
+        text-transform: uppercase;
+        outline: none;
+        border-radius: 3px;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: pointer;
+        z-index: 0;
+      
+    
+    margin: 0.5em 1em 0.5em 0;
+  width: 10em;
+      background-color: #b21500;
+  color: #fff;
+  }
+  paper-submit-button-decorator button::-moz-focus-inner {
+    border: 0;
+  }
+</style>
+
+</div>
+</div>
