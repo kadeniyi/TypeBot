@@ -13,11 +13,19 @@ class Typers
   property :email,         String, :required => true
   property :password,         String, :required => true
   property :username,         String, :required => true
+  
+  has n, :records
+end
+
+class Record
+  include DataMapper::Resource
+  property :id,           Serial
   property :cpm,         Integer
   property :wpm,         Integer
   property :completed_at, DateTime
-end
 
+  belongs_to :typers
+end
 
 DataMapper.finalize
 DataMapper.auto_upgrade!
@@ -33,6 +41,7 @@ enable :sessions
 @@passdb = ""
 @@usernam = ""
 @high = 0
+@highsco1 =""
 
 
 
@@ -50,22 +59,34 @@ enable :sessions
 
   get '/index' do
   	der = ""
-  	@highsco = Typers.all(:cpm.not=> nil,:limit => 10, :order => [ :cpm.desc ])
+  	#@highsco = Typers.all(:cpm.not=> nil,:limit => 10, :order => [ :cpm.desc ])
+
+  	@highsco1 = Record.all(:cpm.not=> nil,:limit => 10, :order => [ :cpm.desc ])
+  	recx = Hash.new 
+  	@recv = Array.new
+  	r=0
+  	  		@highsco1.each{|recordVal| 
+
+  	  		recx =  {cpm: recordVal.cpm, firstname: recordVal.typers.firstname, lastname: recordVal.typers.surname, wpm: recordVal.wpm }
+  	  		@recv << recx
+  	  	}
+
+
+
   		@array = Array.new
-  		@highsco.length.times{|u|
-  			fev = @highsco[u].cpm
+  		@highsco1.length.times{|u|
+  			fev = @highsco1[u].cpm
   			@array << fev
   		}
-
 
   	@high = @array.min
 
   	n =0
   	if session['login'] == 1
-  		der = @highsco
+  		#der = @highsco1
 	  	quest = ["The World is a stage", "Life is all about change", "Andela is a place to be", "The two weeks training is enough to change your life"]
 	    user = @@usernam[0]
-	    erb :index, :locals => {:user => user, :quest => quest, :highscore => @highsco, :n => n}
+	    erb :index, :locals => {:user => user, :quest => quest, :highscore => @recv, :n => n}
 	else
 		redirect to('/')
 	end
@@ -124,12 +145,18 @@ post '/submit' do
   	if session["login"] != 1
   		redirect to('/index')
   	else
-  		acct = Typers.get session['uid']
-  		acct.cpm = params[:bar]
-  		acct.wpm = params[:bar2]
-  		acct.completed_at = Time.now
-  		acct.save
-  		@highsco = Typers.all(:cpm.not=> nil,:limit => 10, :order => [ :cpm.desc ])
+  		Record.create(:cpm => params[:bar].to_i, :wpm => params[:bar2].to_i, :completed_at => Time.now, :typers_id => session['uid'])
+
+  		@highsco1 = Record.all(:cpm.not=> nil,:limit => 10, :order => [ :cpm.desc ])
+		  	recx = Hash.new 
+		  	@recv = Array.new
+  
+  	  		@highsco1.each{|recordVal| 
+
+  	  		recx =  {cpm: recordVal.cpm, firstname: recordVal.typers.firstname, lastname: recordVal.typers.surname, wpm: recordVal.wpm }
+  	  		@recv << recx
+  	  	}
+
     	return "Your score #{params[:bar]}CPM, #{params[:bar2]}WPM  has been saved to your profile"
 	end
   end

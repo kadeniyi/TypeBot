@@ -54,8 +54,8 @@ a, a:hover {
 	<label class="high" id="high"><%=@high.to_s%></label>
 	  <% for @item in highscore %>
 	  	<% n+=1 %>
-	    <p ><label style="float: left; padding-left: 2px;"><%= n.to_s+". "+@item.firstname + " " +@item.surname%></label>
-	    	<label style="float: right; padding-right: 4px;"><%= @item.cpm.to_s + "CPM " +@item.wpm.to_s+"WPM "%></label></p><br/>
+	    <p ><label style="float: left; padding-left: 2px;"><%= @item[:firstname].to_s + " " + @item[:surname].to_s%></label>
+	    	<label style="float: right; padding-right: 4px;"><%= @item[:cpm].to_s + "CPM " +@item[:wpm].to_s+"WPM "%></label></p><br/>
 	  <% end %>
 	</div>
 	
