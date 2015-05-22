@@ -48,40 +48,39 @@ a, a:hover {
 
 <div style="background-color:#ffffff; margin-left: auto;padding: 10px; margin-right: auto;margin-bottom: 10px;margin-top: 2px;padding-bottom: 10px; height:auto; width:99%;">
   
-<div class="type2" id="hs1">
-	<div id="hs">
-	<center><label>Highest Scores</label></center>
-	<label class="high" id="high"><%=@high.to_s%></label>
-	  <% for @item in highscore %>
-	  	<% n+=1 %>
-	    <p ><label style="float: left; padding-left: 2px;"><%= @item[:firstname].to_s + " " + @item[:surname].to_s%></label>
-	    	<label style="float: right; padding-right: 4px;"><%= @item[:cpm].to_s + "CPM " +@item[:wpm].to_s+"WPM "%></label></p><br/>
-	  <% end %>
-	</div>
+	<div class="type2" id="hs1">
+		<div id="hs">
+			<h2><label>High Scores</label></h2>
+			<label class="high" id="high"><%=@high.to_s%></label>
+			  <% for @item in highscore %>
+			  	<% n+=1 %>
+			    <h3><p style="width:100%;"><label style="float: left; padding-left: 2px;width:40%;"><%= n.to_s+". "+@item[:firstname].to_s + " "+@item[:lastname].to_s%></label>
+			    	<label style="float: left; padding-right: 4px; width:40%;"><%= @item[:wpm].to_s + "WPM "%></label></p></h3><br/>
+			  <% end %>
+		</div>
 	
-</div>
-
-<div class="type">
-	<script type="text/javascript" src="script.js"></script>
-
-	<paper-button raised class="colored" id="button1"><label id="lab">Start Typing!</label></paper-button>
-	<div id="result" style="float: right; "></div>
-	<div class="click" id="mydiv">
-		<p><h1 id="mlabel"><label id="mylabel"><%= quest[rand(0..3)] %><label></h1></p>
-		
-			<textarea id="t1"></textarea>
-		<p>
-                <span class="label">Characters/Minute</span>
-                <span id="CPM">0</span>
-            </p>
-            <p>
-                <span class="label">Words/Minute</span>
-                <span id="WPM">0</span>
-            </p>
-
-
-
 	</div>
+
+	<div class="type">
+		<script type="text/javascript" src="script.js"></script>
+
+		<paper-button raised class="colored" id="button1"><label id="lab">Start Typing!</label></paper-button>
+		<div id="result" style="float: right; "></div>
+		<div class="click" id="mydiv">
+			<p><h2 id="mlabel"><label id="mylabel" style="text-align:justified"><%= quest[rand(0..6)] %><label></h2></p>
+			
+				<textarea id="t1"></textarea>
+			<p class="charac">
+	           	<span class="label">Characters/Minute</span>
+	            <span id="CPM">0</span>
+	        </p>
+	        <p>
+	            <span class="label">Words/Minute</span>
+	            <span id="WPM">0</span>
+	        </p>
+	</div>
+
+
 	
 <form id="foo" class="hideform">
    
@@ -116,15 +115,18 @@ a, a:hover {
    	display: none;
    }
 
+   .charac{
+   	display: none;
+   }
 
   .type{
   	position: absolute;
   	text-transform: inherit;
-  	border: solid #b21500 2px;
+  	//border: solid #b21500 2px;
   	margin-left: 32%; 
   	margin-right: auto;
   	margin-bottom: 10px;
-  	margin-top: 18px;
+  	margin-top: 20px;
   	width: 50%;
   	padding: 10px;
   	
@@ -137,15 +139,15 @@ a, a:hover {
   	margin-top: 18px;
   	margin-bottom: 10px;
   	margin-right: auto;
-  	width: 30%;
-  	border: solid #b21500 2px;
+  	width: 25%;
+  	//border: solid #b21500 2px;
   	padding-top: 10px;
   	padding-bottom: 15px;
   }
  
   textarea {
   	margin: auto;
-  	border: solid #b21500 2px;
+  	border: solid #b21500 1px;
     text-transform: inherit;
   	width: 98%;
   	padding: 2px;

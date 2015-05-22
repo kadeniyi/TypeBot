@@ -27,8 +27,9 @@ $(document).ready(function(){
     		$("#mlabel").load(location.href + " #mylabel");
     		$('textarea').val("");
     		$('.click').hide();
+    		$('#result').show();
     		
-    		var ch = parseInt(document.getElementById('CPM').textContent);
+    		var ch = parseInt(document.getElementById('WPM').textContent);
     	if (ch > high){
     		$("#hs1").fadeOut(5)
     		$("#hs1").load(location.href + " #hs");
@@ -96,12 +97,9 @@ $("#foo").submit(function(event){
     // Serialize the data in the form
     var serializedData = $form.serialize();
 
-    // Let's disable the inputs for the duration of the Ajax request.
-    // Note: we disable elements AFTER the form data has been serialized.
-    // Disabled form elements will not be serialized.
     $inputs.prop("disabled", true);
 
-    // Fire off the request to /form.php
+    // Fire off the request to /submit
     request = $.ajax({
         url: "/submit",
         type: "post",
@@ -110,9 +108,7 @@ $("#foo").submit(function(event){
 
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
-    	//spinner.spin(target);
-    	//document.getElementById('hs').display("none");
-        // Log a message to the console
+   
         console.log("Hooray, it worked!");
         $("#result").html(response);
     });

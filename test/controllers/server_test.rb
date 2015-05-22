@@ -18,4 +18,20 @@ class MyAppTest < Minitest::Test
     get '/'
     assert_equal 200, last_response.status
   end
+
+  def test_logout
+    get '/logout'
+    assert_equal 302, last_response.status
+  end
+
+  def test_signup
+    get '/signup'
+    assert_equal 200, last_response.status
+  end
+
+  def test_submit
+    get '/submit' :session[login]=>0
+    assert_equal 200, last_response.status
+  end
+  
 end
